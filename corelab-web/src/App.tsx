@@ -1,45 +1,42 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useState } from "react";
+import { VehicleResponse } from "./service/vehicle/vehicle-types";
+import { useGetVehicles } from "./hook/useGetVehicles";
+import "./App.scss";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+export interface QueryParams {
+    search: null | string;
 }
 
-export default App
+function App() {
+    const [filterParam, setFilterParam] = useState<QueryParams>({
+        search: null,
+    });
+    const [text, setText] = useState("");
+    const { data, isError, error, isLoading } = useGetVehicles<VehicleResponse[], Error>(filterParam);
+
+    const handleClick = () => {
+        if (text) {
+            setFilterParam({ search: text });
+        }
+    };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (isError) {
+        return <div>Error {error.message}</div>;
+    }
+
+    return (
+        <div>
+            <input type="text" onChange={(e) => setText(e.target.value)} />
+            <button onClick={handleClick}>Enviar</button>
+            {data.map((vehicle) => (
+                <div>{JSON.stringify(vehicle)}</div>
+            ))}
+        </div>
+    );
+}
+
+export default App;
