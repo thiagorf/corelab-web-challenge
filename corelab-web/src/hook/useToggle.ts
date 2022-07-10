@@ -5,7 +5,7 @@ interface ToggleResponse {
     handleToggle: () => void;
 }
 
-export const useToogle = (): ToggleResponse => {
+export const useToggle = (): ToggleResponse => {
     const [toggle, setToggle] = useState(false);
 
     const handleToggle = () => {

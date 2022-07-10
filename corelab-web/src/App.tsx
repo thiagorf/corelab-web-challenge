@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { VehicleResponse } from "./service/vehicle/vehicle-types";
 import { useGetVehicles } from "./hook/useGetVehicles";
-import "./App.scss";
+import { Modal } from "./components/modal/Modal";
+import { useModal } from "./hook/useModal";
 
 export interface QueryParams {
     search: null | string;
 }
 
 function App() {
+    const { toggle, handleToggle } = useModal();
     const [filterParam, setFilterParam] = useState<QueryParams>({
         search: null,
     });
@@ -32,6 +34,12 @@ function App() {
         <div>
             <input type="text" onChange={(e) => setText(e.target.value)} />
             <button onClick={handleClick}>Enviar</button>
+            <button onClick={handleToggle}>criar veiculo</button>
+            {toggle && (
+                <Modal>
+                    <p>Teste</p>
+                </Modal>
+            )}
             {data.map((vehicle) => (
                 <div>{JSON.stringify(vehicle)}</div>
             ))}
