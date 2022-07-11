@@ -43,10 +43,10 @@ function App() {
 
     return (
         <div className="container">
-            <div>
-                <input type="text" onChange={(e) => setText(e.target.value)} />
-                <label>
-                    Ordenar:
+            <div className="vehicle-filters">
+                <div id="wrapper">
+                    <input type="text" onChange={(e) => setText(e.target.value)} />
+
                     <select
                         value={filterParam.sort}
                         onChange={(e) => setFilterParam((prev) => ({ ...prev, sort: e.target.value }))}
@@ -54,14 +54,16 @@ function App() {
                         <option value="asc">ascendente</option>
                         <option value="desc">descendente</option>
                     </select>
-                </label>
-                <button onClick={handleClick}>Enviar</button>
-            </div>
 
-            <Link className="create-vehicle" to="/create-vehicle">
-                <span>criar veiculo</span>
-                <RiAddLine />
-            </Link>
+                    <button onClick={handleClick}>Enviar</button>
+                </div>
+            </div>
+            <div id="create-wrapper">
+                <Link className="create-vehicle" to="/create-vehicle">
+                    <span>criar veiculo</span>
+                    <RiAddLine />
+                </Link>
+            </div>
 
             <div className="vehicle-content">
                 <h2>Favoritos</h2>

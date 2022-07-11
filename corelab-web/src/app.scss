@@ -1,12 +1,48 @@
+.vehicle-filters {
+    width: 93%;
+    height: 35px;
+    margin: 6px auto 10px auto;
+}
+
+#wrapper {
+    max-width: 420px;
+    height: 100%;
+    input,
+    select,
+    button {
+        background-color: #fff;
+        border: 1px solid #434343;
+        height: 100%;
+    }
+    input {
+        width: 45%;
+        border-right: 0;
+        padding-left: 4px;
+        border-radius: 4px 0 0 4px;
+    }
+    select {
+        width: 35%;
+        border-right: 0;
+    }
+    button {
+        width: 20%;
+        border-radius: 0 4px 4px 0;
+    }
+}
+
+#create-wrapper {
+    width: 93%;
+    margin: 0 auto 10px auto;
+}
+
 .create-vehicle {
     display: block;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2%;
-    width: 93%;
+    max-width: 420px;
     height: 45px;
-    margin: 0 auto 10px auto;
     border: 1px solid #434343;
     border-radius: 4px;
     span {
