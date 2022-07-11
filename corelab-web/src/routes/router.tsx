@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { CreateVehicleForm, EditVehicleForm } from "../components/vehicleForm/formOptions";
 import App from "../App";
-import { CreateVehicleForm } from "../components/vehicleForm/createVehicleForm/create-vehicle-form";
-import { EditVehicleForm } from "../components/vehicleForm/editVehicleForm/edit-vehicle-form";
 
 export const Router = () => {
     return (

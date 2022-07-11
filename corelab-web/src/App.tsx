@@ -6,14 +6,21 @@ import { VehicleCard } from "./components/vehicle/vehicle-card";
 import { useQuery } from "react-query";
 import { getFavoriteVehicles } from "./service/vehicle/getFavoriteVehicles";
 
+enum SortOptions {
+    ASC = "asc",
+    DESC = "desc",
+}
+
 export interface QueryParams {
     search: null | string;
+    sort: "asc" | "desc" | string;
 }
 
 function App() {
     const [text, setText] = useState("");
     const [filterParam, setFilterParam] = useState<QueryParams>({
         search: null,
+        sort: "asc",
     });
 
     const { data, isError, error, isLoading } = useGetVehicles<VehicleResponse[], Error>(filterParam);
@@ -24,7 +31,7 @@ function App() {
 
     const handleClick = () => {
         if (text) {
-            setFilterParam({ search: text });
+            setFilterParam((prevValue) => ({ ...prevValue, search: text }));
         }
     };
 
@@ -39,6 +46,16 @@ function App() {
     return (
         <div>
             <input type="text" onChange={(e) => setText(e.target.value)} />
+            <label>
+                Ordenar:
+                <select
+                    value={filterParam.sort}
+                    onChange={(e) => setFilterParam((prev) => ({ ...prev, sort: e.target.value }))}
+                >
+                    <option value="asc">ascendente</option>
+                    <option value="desc">descendente</option>
+                </select>
+            </label>
             <button onClick={handleClick}>Enviar</button>
             <Link to="/create-vehicle">criar veiculo</Link>
             <div>

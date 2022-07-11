@@ -1,9 +1,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { CreateVehicleData } from "../../../service/vehicle/vehicle-types";
-import { createVehicle } from "../../../service/vehicle";
-import { VehicleForm } from "../formWrapper";
-import { Input } from "../inputs";
+import { CreateVehicleData } from "../../../../service/vehicle/vehicle-types";
+import { createVehicle } from "../../../../service/vehicle";
+import { VehicleForm } from "../../formWrapper";
+import { Input } from "../../inputs";
 
 export const CreateVehicleForm = () => {
     const navigate = useNavigate();

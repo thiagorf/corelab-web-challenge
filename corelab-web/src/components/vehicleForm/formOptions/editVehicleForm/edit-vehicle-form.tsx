@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getOneVehicle } from "../../../service/vehicle";
-import { updateVehicle } from "../../../service/vehicle/updateVehicle";
-import { UpdateVehicleData, VehicleResponse } from "../../../service/vehicle/vehicle-types";
-import { VehicleForm } from "../formWrapper";
-import { Input } from "../inputs";
+import { getOneVehicle } from "../../../../service/vehicle";
+import { updateVehicle } from "../../../../service/vehicle/updateVehicle";
+import { UpdateVehicleData, VehicleResponse } from "../../../../service/vehicle/vehicle-types";
+import { VehicleForm } from "../../formWrapper";
+import { Input } from "../../inputs";
 
 export const EditVehicleForm = () => {
     const { id } = useParams();
