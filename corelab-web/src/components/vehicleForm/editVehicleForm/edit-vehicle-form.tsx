@@ -30,6 +30,7 @@ export const EditVehicleForm = () => {
             const response = await getOneVehicle(id);
 
             setVehicleData(response);
+            reset(response);
         })();
     }, []);
 
