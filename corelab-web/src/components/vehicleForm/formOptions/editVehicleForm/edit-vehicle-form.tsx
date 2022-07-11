@@ -40,7 +40,11 @@ export const EditVehicleForm = () => {
             <VehicleForm onSubmit={handleSubmit(attemptSubmit)}>
                 <Input label="name" register={register} required />
                 <Input label="brand" register={register} required />
-                <Input label="color" register={register} required />
+                <select {...register("color", { required: true })}>
+                    <option value="vermelho">vermelho</option>
+                    <option value="azul">azul</option>
+                    <option value="branco">branco</option>
+                </select>
                 <Input label="description" register={register} required />
                 <Input label="plate" register={register} required />
                 <Input label="price" register={register} required />

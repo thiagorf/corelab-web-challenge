@@ -19,9 +19,16 @@ export const CreateVehicleForm = () => {
         <div>
             <Link to="/">Voltar</Link>
             <VehicleForm onSubmit={handleSubmit(attemptSubmit)}>
+                <h4>Criar veiculo</h4>
                 <Input label="name" register={register} required />
                 <Input label="brand" register={register} required />
-                <Input label="color" register={register} required />
+                <select {...register("color", { required: true })}>
+                    <option value="vermelho" selected>
+                        vermelho
+                    </option>
+                    <option value="azul">azul</option>
+                    <option value="branco">branco</option>
+                </select>
                 <Input label="description" register={register} required />
                 <Input label="plate" register={register} required />
                 <Input label="price" register={register} required />
