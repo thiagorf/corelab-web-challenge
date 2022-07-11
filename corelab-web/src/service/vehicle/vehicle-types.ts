@@ -21,6 +21,8 @@ export interface CreateVehicleData {
     plate: string;
 }
 
+export type UpdateVehicleData = CreateVehicleData;
+
 interface VehicleError {
     error: string;
 }

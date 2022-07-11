@@ -1,8 +1,8 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { CreateVehicleData } from "../../../service/vehicle/vehicle-types";
+import { createVehicle } from "../../../service/vehicle";
 import { VehicleForm } from "../formWrapper";
-import api from "../../../service/api";
 import { Input } from "../inputs";
 
 export const CreateVehicleForm = () => {
@@ -10,7 +10,8 @@ export const CreateVehicleForm = () => {
     const { register, handleSubmit } = useForm<CreateVehicleData>();
 
     const attemptSubmit: SubmitHandler<CreateVehicleData> = async (data) => {
-        await api.post("/v1/vehicles", data);
+        await createVehicle(data);
+
         navigate("/");
     };
 
