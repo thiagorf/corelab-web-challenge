@@ -18,7 +18,7 @@ function App() {
 
     const { data, isError, error, isLoading } = useGetVehicles<VehicleResponse[], Error>(filterParam);
     const { data: favorite, isLoading: isFavoriteLoading } = useQuery<VehicleResponse[], Error>(
-        "favorite-vehicles",
+        ["favorite-vehicles"],
         getFavoriteVehicles,
     );
 
