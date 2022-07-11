@@ -1,0 +1,14 @@
+.vehicle-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #434343;
+    border-radius: 4px;
+    width: 180px;
+    padding: 1%;
+    font-size: 0.875rem;
+    .vehicle-options {
+        width: fit-content;
+        align-self: flex-end;
+        font-size: 1rem;
+    }
+}

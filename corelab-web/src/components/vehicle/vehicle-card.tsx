@@ -5,6 +5,7 @@ import { RiCloseLine, RiEditBoxLine } from "react-icons/ri";
 import { VehicleFavOptions } from "./vehicle-fav-options";
 import { currencyFormat } from "../../utils/currency";
 import { deleteVehicle } from "../../service/vehicle";
+import "./vehicle-card.scss";
 
 export const VehicleCard = ({ vehicle }: { vehicle: VehicleResponse }) => {
     const queryClient = useQueryClient();
@@ -44,17 +45,19 @@ export const VehicleCard = ({ vehicle }: { vehicle: VehicleResponse }) => {
     });
 
     return (
-        <div className={`${vehicle.color}`}>
-            <VehicleFavOptions {...vehicle} />
-            <Link to={`/edit-vehicle/${vehicle.id}`}>
-                <RiEditBoxLine />
-            </Link>
-            <RiCloseLine onClick={() => attemptVehicleDelete.mutate(vehicle.id)} />
-            <h3>{vehicle.name}</h3>
-            <p>{vehicle.brand}</p>
-            <p>{currencyFormat(vehicle.price)}</p>
-            <p>{vehicle.description}</p>
-            <p>{vehicle.color}</p>
+        <div className={`vehicle-card  ${vehicle.color}`}>
+            <div className="vehicle-options">
+                <VehicleFavOptions {...vehicle} />
+                <Link to={`/edit-vehicle/${vehicle.id}`}>
+                    <RiEditBoxLine />
+                </Link>
+                <RiCloseLine onClick={() => attemptVehicleDelete.mutate(vehicle.id)} />
+            </div>
+            <p>Nome: {vehicle.name}</p>
+            <p>Marca: {vehicle.brand}</p>
+            <p>Preço: {currencyFormat(vehicle.price)}</p>
+            <p>Descrição: {vehicle.description}</p>
+            <p>Cor: {vehicle.color}</p>
         </div>
     );
 };

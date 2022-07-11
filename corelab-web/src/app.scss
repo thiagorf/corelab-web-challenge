@@ -1,0 +1,61 @@
+.create-vehicle {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2%;
+    width: 93%;
+    height: 45px;
+    margin: 0 auto 10px auto;
+    border: 1px solid #434343;
+    border-radius: 4px;
+    span {
+        vertical-align: middle;
+    }
+}
+
+.vehicle-content {
+    height: fit-content;
+    width: 93%;
+    margin: 0 auto;
+
+    h2 {
+        width: 100%;
+        margin-bottom: 2%;
+    }
+}
+
+.vehicle-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+
+    column-gap: 4%;
+    row-gap: 4%;
+    margin-bottom: 5%;
+
+    @media only screen and (min-width: 653px) {
+        grid-template-columns: repeat(3, min-content);
+    }
+
+    @media only screen and (min-width: 886px) {
+        grid-template-columns: repeat(4, min-content);
+    }
+
+    @media only screen and (min-width: 1200px) {
+        grid-template-columns: repeat(5, min-content);
+        row-gap: 7%;
+    }
+}
+
+.vermelho {
+    background-color: tomato;
+}
+
+.azul {
+    background-color: aqua;
+}
+
+.branco {
+    background-color: white;
+}

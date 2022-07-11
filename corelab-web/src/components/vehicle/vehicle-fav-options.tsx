@@ -1,7 +1,6 @@
 import { RiHeartFill, RiHeartLine } from "react-icons/ri";
 import { useMutation, useQueryClient } from "react-query";
-import { favoriteVehicle } from "../../service/vehicle/favoriteVehicle";
-import { unfavoriteVehicle } from "../../service/vehicle/unfavoriteVehicle";
+import { favoriteVehicle, unfavoriteVehicle } from "../../service/vehicle";
 import { VehicleResponse } from "../../service/vehicle/vehicle-types";
 
 export const VehicleFavOptions = ({ favorite, id }: { favorite: boolean; id: string }) => {
@@ -37,7 +36,6 @@ export const VehicleFavOptions = ({ favorite, id }: { favorite: boolean; id: str
         },
     });
 
-    //TODO UNFAVORITE
     const attemptUnfavorite = useMutation(unfavoriteVehicle, {
         onMutate: async (vehicle_id) => {
             await queryClient.cancelQueries(["favorite-vehicles"]);
